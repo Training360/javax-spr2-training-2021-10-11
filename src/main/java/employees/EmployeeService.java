@@ -16,7 +16,7 @@ public class EmployeeService {
     private EmployeeConverter employeeConverter;
 
     public List<EmployeeDto> listEmployees(Optional<String> part) {
-        if (part.isEmpty()) {
+        if (!part.isPresent()) {
             return employeeRepository.findAllOrderByName();
         }
         else {
