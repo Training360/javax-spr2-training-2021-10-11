@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: password
 
   empapp:
-    image:empapp
+    image: empapp
     ports:
       - '8084:8080'
     depends_on:
