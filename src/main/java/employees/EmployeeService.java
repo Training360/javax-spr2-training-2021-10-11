@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -14,8 +15,13 @@ public class EmployeeService {
 
     private EmployeeConverter employeeConverter;
 
-    public List<EmployeeDto> listEmployees() {
-        return employeeConverter.convert(employeeRepository.findAll());
+    public List<EmployeeDto> listEmployees(Optional<String> part) {
+        if (part.isEmpty()) {
+            return employeeConverter.convert(employeeRepository.findAll());
+        }
+        else {
+            return employeeConverter.convert(employeeRepository.findAllByNameLikeOrderByName("%" + part.get() + "%"));
+        }
 
     }
 

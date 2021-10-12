@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -15,8 +16,8 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping
-    public List<EmployeeDto> employees() {
-        return employeeService.listEmployees();
+    public List<EmployeeDto> employees(@RequestParam Optional<String> part) {
+        return employeeService.listEmployees(part);
     }
 
     @GetMapping("/{id}")
