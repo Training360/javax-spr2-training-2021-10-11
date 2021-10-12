@@ -1,6 +1,9 @@
 package employees;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +19,8 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping
-    public List<EmployeeDto> employees(@RequestParam Optional<String> part) {
-        return employeeService.listEmployees(part);
+    public List<EmployeeDto> employees(@RequestParam Optional<String> part, @PageableDefault(page = 0, size = 20) Pageable pageable) {
+        return employeeService.listEmployees(part, pageable);
     }
 
     @GetMapping("/{id}")

@@ -1,11 +1,15 @@
 package employees;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 @AllArgsConstructor
@@ -15,12 +19,19 @@ public class EmployeeService {
 
     private EmployeeConverter employeeConverter;
 
-    public List<EmployeeDto> listEmployees(Optional<String> part) {
+//    @PostConstruct
+//    public void init() {
+//        IntStream.range(0, 100)
+//                .forEach(i -> createEmployee(new CreateEmployeeCommand("John Doe " + i)));
+//
+//    }
+
+    public List<EmployeeDto> listEmployees(Optional<String> part, Pageable pageable) {
         if (!part.isPresent()) {
-            return employeeRepository.findAllOrderByName();
+            return employeeRepository.findAllOrderByName(pageable);
         }
         else {
-            return employeeRepository.findAllByName("%" + part.get() + "%");
+            return employeeRepository.findAllByName("%" + part.get() + "%", pageable);
         }
 
     }
