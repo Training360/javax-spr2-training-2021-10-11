@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  empapp-postgres:
+    image: postgres
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_PASSWORD: password
+
+  empapp:
+    image:empapp
+    ports:
+      - '8084:8080'
+    depends_on:
+      - empapp-postgres
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:postgresql://empapp-postgres:5432/postgres'
+      EMPAPP_WELCOME: 'HelloDocker'
