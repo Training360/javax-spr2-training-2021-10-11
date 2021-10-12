@@ -17,10 +17,10 @@ public class EmployeeService {
 
     public List<EmployeeDto> listEmployees(Optional<String> part) {
         if (part.isEmpty()) {
-            return employeeConverter.convert(employeeRepository.findAll());
+            return employeeRepository.findAllOrderByName();
         }
         else {
-            return employeeConverter.convert(employeeRepository.findAllByNameLikeOrderByName("%" + part.get() + "%"));
+            return employeeRepository.findAllByName("%" + part.get() + "%");
         }
 
     }

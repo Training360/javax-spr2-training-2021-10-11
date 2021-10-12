@@ -3,7 +3,7 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/api/employees?part=J
+GET http://localhost:8080/api/employees?part=Jack
 Accept: application/json
 
 ###
