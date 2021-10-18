@@ -1,5 +1,8 @@
 package employees;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +17,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/employees")
 @AllArgsConstructor
+@Tag( name = "Operations on employees")
 public class EmployeeController {
 
     private EmployeeService employeeService;
@@ -31,6 +35,13 @@ public class EmployeeController {
     @PostMapping // nem idempotens
     @ResponseStatus(HttpStatus.CREATED)
 //    @PreAuthorize("hasAuthority('ROLE_ADMIN')") // spring expression language kifejezést
+
+    @Operation(summary = "creates a new employee", description = "Creates a new employee." +
+            "Validates the name.")
+    @ApiResponse(responseCode = "201",
+            description = "Employee has been created")
+    @ApiResponse(responseCode = "404",
+            description = "Employee not found")
     public EmployeeDto createEmployee(@Valid @RequestBody CreateEmployeeCommand command) {
         return employeeService.createEmployee(command);
     }
