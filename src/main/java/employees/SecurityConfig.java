@@ -13,8 +13,11 @@ import javax.sql.DataSource;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+//    @Autowired
+//    private DataSource dataSource;
+
     @Autowired
-    private DataSource dataSource;
+    private UserService userService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -24,9 +27,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .password("$2a$10$Lf4VZCtA4iQerEpP5EMqsOv0lXnZykWzKvd1q68J0FsZ0JnYy5Ymi")
 //                .authorities("normal_user");
 
-        auth
-                .jdbcAuthentication()
-                .dataSource(dataSource);
+//        auth
+//                .jdbcAuthentication()
+//                .usersByUsernameQuery("select nev, jelszo, bekapcsolt from felhasznalok where nev = ?")
+//                .authoritiesByUsernameQuery("select szerepkor from szerepkorok where nev = ?")
+//                .dataSource(dataSource);
+
+        auth.userDetailsService(userService);
+
     }
 
     @Bean
