@@ -30,6 +30,7 @@ public class EmployeeController {
 
     @PostMapping // nem idempotens
     @ResponseStatus(HttpStatus.CREATED)
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')") // spring expression language kifejezést
     public EmployeeDto createEmployee(@Valid @RequestBody CreateEmployeeCommand command) {
         return employeeService.createEmployee(command);
     }

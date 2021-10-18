@@ -1,8 +1,10 @@
 package employees;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +15,7 @@ import java.util.stream.IntStream;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
@@ -27,6 +30,9 @@ public class EmployeeService {
 //    }
 
     public List<EmployeeDto> listEmployees(Optional<String> part, Pageable pageable) {
+//        User user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        log.info("User in service: " + user);
+
         if (!part.isPresent()) {
             return employeeRepository.findAllOrderByName(pageable);
         }
