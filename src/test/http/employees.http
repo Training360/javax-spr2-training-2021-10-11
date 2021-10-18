@@ -3,6 +3,12 @@ Accept: application/json
 
 ###
 
+GET http://localhost:8080
+Accept: application/json
+Authorization: Basic dXNlcjo1MTQ4MjliMS0xYjUzLTQ3MTgtYjM1NC1kNGY3ZTA2YTExODA=
+
+###
+
 GET http://localhost:8080/api/employees
 Accept: application/json
 
