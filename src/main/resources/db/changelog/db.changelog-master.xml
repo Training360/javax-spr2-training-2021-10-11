@@ -16,4 +16,9 @@
         <sqlFile path="insert-init-data.sql"
                  relativeToChangelogFile="true" />
     </changeSet>
+
+    <changeSet id="users" author="vicziani">
+        <sqlFile path="users.sql"
+                 relativeToChangelogFile="true" />
+    </changeSet>
 </databaseChangeLog>
