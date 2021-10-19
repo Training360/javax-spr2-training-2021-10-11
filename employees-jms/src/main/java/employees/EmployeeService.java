@@ -20,6 +20,8 @@ public class EmployeeService {
 
     private EmployeeConverter employeeConverter;
 
+    private EmployeeJmsGateway employeeJmsGateway;
+
 //    @PostConstruct
 //    public void init() {
 //        IntStream.range(0, 100)
@@ -48,6 +50,9 @@ public class EmployeeService {
 
         Employee employee = new Employee(command.getName());
         employeeRepository.save(employee);
+
+        employeeJmsGateway.send("Employee has been created " + command.getName());
+
         return employeeConverter.convert(employee);
 
     }
