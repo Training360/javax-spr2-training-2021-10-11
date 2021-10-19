@@ -51,3 +51,31 @@ Content-Type: application/json
 
 DELETE http://localhost:8080/api/employees/25
 Accept: application/json
+
+###
+
+GET http://localhost:8080/actuator
+
+###
+
+GET http://localhost:8080/actuator/info
+
+###
+
+GET http://localhost:8080/actuator/health
+
+###
+
+GET http://localhost:8080/actuator/scheduledtasks
+
+###
+
+GET http://localhost:8080/actuator/liquibase
+
+###
+
+GET http://localhost:8080/actuator/env
+
+###
+
+GET http://localhost:8080/actuator/caches
