@@ -8,6 +8,11 @@ Accept: application/json
 
 ###
 
+GET http://localhost:8080/api/employees/1
+Accept: application/json
+
+###
+
 GET http://localhost:8080/api/employees?page=1&size=5
 Accept: application/json
 
@@ -35,11 +40,11 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/api/employees/5
+PUT http://localhost:8080/api/employees/1
 Content-Type: application/json
 
 {
-  "name": "Jack Jack Doe"
+  "name": "Jack Jack Jack Doe"
 }
 
 ###
