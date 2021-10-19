@@ -12,6 +12,7 @@ public class JmsConfig {
     @Bean
     public MessageConverter messageConverter(ObjectMapper objectMapper){
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
+        converter.setObjectMapper(objectMapper);
         converter.setTypeIdPropertyName("_typeId");
         return converter;
     }
