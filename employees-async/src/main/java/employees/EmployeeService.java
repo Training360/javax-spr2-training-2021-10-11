@@ -46,6 +46,7 @@ public class EmployeeService {
     }
 
     public EmployeeDto createEmployee(CreateEmployeeCommand command) {
+        log.info(backgroundService.toString());
         backgroundService.doJob();
         Employee employee = new Employee(command.getName());
         employeeRepository.save(employee);
