@@ -79,3 +79,16 @@ GET http://localhost:8080/actuator/env
 ###
 
 GET http://localhost:8080/actuator/caches
+
+###
+
+GET http://localhost:8080/actuator/loggers/employees
+
+###
+
+POST http://localhost:8080/actuator/loggers/employees
+Content-Type: application/json
+
+{
+  "configuredLevel": "DEBUG"
+}

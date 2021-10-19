@@ -53,6 +53,9 @@ public class EmployeeService {
     @CacheEvict(value = "employees", allEntries = true)
     public EmployeeDto createEmployee(CreateEmployeeCommand command) {
 
+        log.info("Create employee");
+        log.debug("Create employee with name {}", command.getName());
+
         Employee employee = new Employee(command.getName());
         employeeRepository.save(employee);
         return employeeConverter.convert(employee);
