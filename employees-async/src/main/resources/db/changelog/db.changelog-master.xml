@@ -17,4 +17,9 @@
                  relativeToChangelogFile="true" />
     </changeSet>
 
+    <changeSet id="log-entry" author="vicziani">
+        <sqlFile path="log-entry.sql"
+                 relativeToChangelogFile="true" />
+    </changeSet>
+
 </databaseChangeLog>
